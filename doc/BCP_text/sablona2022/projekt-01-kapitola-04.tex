@@ -1,0 +1,66 @@
+\chapter{Použité technologie}
+\label{technologie}
+Tato kapitola se zabývá popisem technologií, které byly využity při implementaci aplikace. U~každé technologie je její stručný popis a způsob jakým byla v~aplikaci využita. Jsou zde popsány i důležité knihovny, moduly nebo balíčky, které byly použity.
+
+\section{Python}
+Python je vysokoúrovňový interpretovaný objektově orientovaný skriptovací jazyk. Dynamické typování, vázání a vestavěné vysokoúrovňové datové struktury z~něj dělají jazyk často používaný pro rychlý vývoj aplikací. Python má jednoduchou a lehce čitelnou syntaxi, díky čemuž je kód lehce udržovatelný. Python také podporuje moduly a balíčky, za pomocí kterých lze do kódu vkládat různé funkce a datové struktury \cite{python}. 
+
+Tento jazyk byl v~práci využit pro implementaci parseru GEDCOM souborů, matcheru záznamů na matriky a všech skriptů týkajících se extrakce dat.
+\subsubsection{Python-gedcom}
+Python-gedcom\footnote{Python-gedcom - https://pypi.org/project/python-gedcom/} je modul vytvořený Nicklasem Reincke, určený k~parsování, analyzování a manipulaci s~GEDCOM soubory ve verzi 5.5. 
+
+Tento modul byl v~práci využit pro parsování vstupních GEDCOM souborů.
+
+\subsubsection{Textsearch}
+Textsearch\footnote{Textsearch - https://github.com/kootenpv/textsearch} je knihovna určená k~vyhledávání či manipulaci řetězců v~textu. Je schopná vyhledat řetězce ze zadané množiny v~textu na základě podobnosti celého slova. Výhodou je její rychlost, které nabývá díky použití jazyka C.
+
+Knihovna se používá pro vyhledávání názvů území v~řetězcích reprezentující místo kde proběhla zkoumaná událost.
+
+\subsubsection{Orator}
+Orator\footnote{Orator - \url{https://orator-orm.com/}} ORM\footnote{ORM - Objektově relační mapování, technika zajišťující konverzi dat mezi relační databází a objektově orientovaným programovacím jazykem} je nástroj poskytující základní operace nad relačním databázovým modelem. Syntaxí byl inspirován Laravelem, což je ORM framework pro jazyk PHP (viz níže). Kromě základních ORM operací sebou Orator přináší i možnost vytvářet dotazy skrze query builder.
+
+Tento nástroj byl použit pro lepší práci s~databází v~jazyce Python. Využívají ho parser i matcher. 
+\subsubsection{Beautiful Soup}
+Beautiful Soup\footnote{Beautiful Soup - \url{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}} je knihovna používaná k~získávání informací z~webových stránek. Využívá HTML nebo XML parser, pomocí kterého vytváří strom složený z~elementů stránky obsahující informace vyskytující se na dané stránce. 
+
+V~práci byla knihovna použita při zpracování archivů obsahující matriční knihy.
+\subsubsection{Selenium}
+Tento balíček umožňuje využívat Selenium\footnote{Selenium - \url{https://www.selenium.dev/}} v~rámci jazyka Python. Selenium slouží k~automatizaci interakcí webového prohlížeče.
+
+Balíček byl použit v~případech, kdy zpracovávaný archiv využíval technologií podporujících asynchronní načítání dat.
+\section{PHP}
+PHP, hypertextový preprocesor, je imperativní objektově orientovaný skriptovací jazyk. Je primárně využívaný k~programování dynamických webových stránek a aplikací. Pracuje převážně na straně serveru, kde generuje HMTL kód, který pak posílá klientovi jakožto výsledek akcí. Je to jeden z~nejrozšířenějších jazyků a právě i díky tomu na něj existuje řada fragmentů, funkcí či frameworků \cite{php}.
+
+V~práci byl použit k~implementaci webové aplikace.
+\subsection{Laravel}
+Laravel\footnote{Laravel - \url{https://laravel.com/}} je webový aplikační framework s~výstižnou a elegantní syntaxí, jehož cílem je lehčí a rychlejší vývoj webových aplikací. Definuje rozložení MVC a ulehčuje implementaci běžných funkčností jako autentizace, routování, práce s~sezením. Také vylepšuje práci s~databází obalováním SQL dotazů do kódové syntaxe a brání tak útokům typu SQL injection.
+
+Laravel byl využit pro definici základní webové struktury aplikace.
+
+\section{HTML}
+HTML, HyperText Markup Language, je značkovací jazyk, který se používá k~vytváření základní obsahové kostry webových stránek. Obsah webové stránky mohou tvořit texty, obrázky, tabulky, multimédia a další prvky. Dříve jazyk HTML sloužil i k~formátování vzhledu, dnes už se k~tomu používají kaskádové styly, které umožňují vytvářet vzhled jako druhou, na obsahu nezávislou vrstvu a různě ho měnit podle aktuálního kontextu \cite{html}.
+
+V~práci byl použit k~implementaci pohledů.
+
+\section{JavaScript}
+JavaScript je skriptovací jazyk učený pro tvorbu moderních dynamických webů. Pracuje hlavně na straně klienta společně s~HTML a kaskádovými styly. V~dnešní době je tento jazyk velice populární a existuje pro něj řada knihoven a frameworků \cite{javascript}.
+
+V~aplikaci se JavaScript používá k~implementaci funkcí spuštěných na klientské straně.
+
+\subsection{jQuery}
+Jedná se o~knihovnu napsanou pro jazyk Javascript, která usnadňuje manipulaci s~elementy HTML dokumentu, ovládání JavaScriptových událostí, práci s~AJAX a také sebou přináší různé funkce, animace a efekty. Výhodou jQuery\footnote{jQuery - \url{https://jquery.com/}} je, že díky její velké oblíbenosti pro ni existuje mnoho pluginů, které se dají jednoduše vložit do kódu a používat.
+
+\subsection{Ajax}
+Ajax\footnote{Ajax - \url{https://www.w3schools.com/whatis/whatis_ajax.asp}}, Asynchronous JavaScript and XML, je technologie používaná k~vytváření asynchronních webových aplikací. Umožňuje vytvářet asynchronní požadavky, které běží na pozadí a nenesou sebou nutnost načítat celou stránku.
+
+V~aplikaci byl Ajax využit pro jakékoliv operace nevyžadující znovu načtení stránky. 
+
+\section{JSON}
+JSON, JavaScriptový objektový zápis, je datový formát nezávislý na počítačové platformě. Slouží k~přenosu dat, jež mohou být organizována v~polích nebo agregována v~objektech. Vstupem může být libovolná datová struktura a jeho výstupem je pro člověka jednoduše čitelný řetězec. JSON patří k~jedněm z~nejpoužívanějším datových formátů \cite{json}. 
+
+V~práci byl využit pro serializaci informací o~jednotlivých matričních knihách, pro předávání parametrů požadavků či výsledků funkcí a metod.
+
+\section{MySQL}
+Jedná se o~relační multiplatformní databázový server komunikující pomocí rozšířeného jazyka SQL. MySQL se zaměřuje na výkon a dobrou škálovatelnost (lze jej instalovat na většinu známých operačních systémů). Díky volné licenci se jedná o~jeden z~nejpoužívanějších databázových systémů \cite{mysql}.
+
+V~aplikaci bylo MySQL využito pro veškerou práci s~databází.

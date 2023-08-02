@@ -1,0 +1,13 @@
+\chapter{Testování a optimalizace}
+
+Testování probíhalo průběžně. Vždy když byla implementována nějaká část aplikace byla odzkoušena její funkcionalita a provedena případná oprava či optimalizace. K~testování bylo použito celkem sedm různých GEDCOM souborů. Každý měl různé velikosti a počty záznamů a bylo tedy možné otestovat chování aplikace na menších i větších souborech. Skoro všechny soubory měli také jiného autora, a tak tedy i způsoby zápisů se lišili. Díky tomu se mnohokrát měnil způsob řešení určitých problému, tak aby byla aplikace funkční pro co nejvíce možných způsobů zápisu.
+
+\subsubsection{Python skripty}
+
+U~Python skriptů se hlavně testovalo správné zpracování dat a zápis do databáze. U~parseru se nejvíce testovalo zpracování územních řetězců, kde se kvůli povolným pravidlům pro zápis lokace mohlo vyskytnout mnoho problémů. U~matcheru se pak testovala správnost výběru matrik. 
+
+Kromě funkcionality se u~skriptů nahlíželo na rychlost zpracování. Čas průběhu skriptu se měřil pomocí Python knihovny datetime. Na tyto časy se při implementaci vedl veliký důraz jelikož bylo potřeba, aby se soubory zpracovávali v~rozumném čase. Zde také přišla na řadu optimalizace, která se týkala hlavně co největšího zmenšení přístupů do databáze. Každý takový přístup je totiž časově náročná operace. Přístupy byly omezeny využitím slovníků a vkládáním několika záznamů naráz. Čas, který si skript vyžadoval na zpracování souboru, byl tak několikanásobně krát zmenšen.
+
+\subsubsection{Webová aplikace}
+
+U~samotné aplikace se pak testovalo hlavně správné zobrazení dat a reakce na provedené operace. Jestliže nastala nějaká chyba, pak byl její původ zobrazen na výstupu. Tato možnost je nastavena v~konfiguračním souboru aplikace v~sekci \verb|APP_DEBUG|. O~zobrazení chyby se v~tomto případě stará Laravel třída \verb|Handler|. Na výstupu se zobrazuje sled chyb vedoucí k~funkci, kde nastal problém a obsah hlaviček požadavku, který problém vyvolal. Debugovat chybu pak bylo možné za pomocí funkcí \verb|dd| a \verb|dump|, které poskytuje Laravel v~rámci pomocných funkcí. Tyto funkce zobrazí na výstup hodnoty proměnných, které jsou jim předány a dá se pomocí nich tak zjistit kde chyba nastala.

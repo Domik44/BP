@@ -1,0 +1,13 @@
+\chapter{Závěr}
+
+Cílem této práce bylo vytvořit aplikaci, která umožní uživateli nahrát soubor ve formátu GEDCOM, zobrazí mu vytvořené záznamy k~chybějícím informacím událostí narození, úmrtí i oddání a navrhne matriky kde by tyto informace mohl nalézt. 
+
+V~rámci jejího vypracování bylo zapotřebí nastudovat problematiku provádění genealogického výzkumu, strukturu matrik a formátu GEDCOM. Bylo potřeba analyzovat požadavky uživatelů, navrhnout vzhled aplikace, strukturu databáze a zvolit vhodné technologie k~vypracování aplikace. Pomocí těchto technologií pak implementovat její jednotlivé části.
+
+Součástí této práce nebyla jen implementace aplikace, ale také příprava a zpracování všech potřebných dat. Tedy pochopení a zpracování územního rozsahu České republiky, a dále extrakce dat ze všech osmi archivů, uchovávajících matriční knihy, do formátu JSON.
+
+Výsledkem práce je tedy aplikace, která přijme soubor ve formátu GEDCOM, zpracuje ho, uloží si veškeré potřebné informace do databáze a zobrazí vytvořené záznamy s~navrženými matrikami, které jsou řazené podle priorit. Díky zpracování archivů je možné se přes tyto navržené matriky prokliknout na jejich detail a rovnou v~nich vyhledávat. Aplikace disponuje i možností jednoduchého vyhledávání skrz záznamy na základě tagu nebo jména osob/rodin. Aplikace uživateli také nabízí poměrně sofistikovaný poznámkový systém, ve kterém si uživatel může vést poznámky jak k~matrikám, tak jednotlivým osobám či rodinám a propojit tyto poznámky mezi sebou.
+
+V~budoucnu by se aplikace mohla rozšířit o~několik nových funkcionalit. Jednou z~nich by byla možnost uživatele dopisovat nalezené informace přímo k~záznamům a připisovat je tak do databáze. Při tom by se na základě nových informací mohl provést přepočet a mohli by tak být navrženy k~určitým záznamům nové matriky. Dalším rozšířením, souvisejícím s~předchozím, by mohlo být, že by aplikace mohla vyrobit nový GEDCOM soubor, který by obsahoval nově vyplněné informace a uživatel by si jej mohl stáhnout pro příští využití. Aplikace by se také dala rozšířit o~aliasy území, tedy názvy týkající se nějakých území v~cizím jazyce. Existuje mnoho dalších způsobů, kterými by se aplikace mohla rozšířit.
+
+Vypracování této práce mi přineslo mnoho nových zkušeností. Především část přípravy dat, kdy jsem se musel naučit pracovat s~daty poskytovanými státem. Při zpracování archivů jsem se naučil, jak extrahovat data z~webových stránek pomocí jazyka Python, což pro mě do této doby bylo neprobádané území. Zlepšila se mi schopnost pracovat se všemi použitými jazyky a také schopnost sám rozebrat a řešit problémy, které nastávali při implementaci. Přínosem pro mě také bylo rozšíření obzorů v~rámci genealogie.

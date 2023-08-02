@@ -1,0 +1,89 @@
+\chapter{Obsah přiloženého paměťového média}
+\begin{itemize}
+	\item \emph{src/}
+	\begin{itemize}
+		\item Adresářová struktura Laravel aplikace.
+	\end{itemize}
+	\item \emph{src/python\_scripts/}
+	\begin{itemize}
+		\item Python skripty pro parser a matcher.
+	\end{itemize}
+	\item \emph{territories/}
+	\begin{itemize}
+		\item Skripty pro zpracování území.
+	\end{itemize}
+	\item \emph{scrapers/}
+	\begin{itemize}
+		\item Python skripty pro extrakci dat z~online archivů.
+	\end{itemize}
+	\item \emph{scrapers/Jsons}
+	\begin{itemize}
+		\item Zpracované JSON soubory jednotlivých archivů.
+	\end{itemize}
+	\item \emph{doc/}
+	\begin{itemize}
+		\item Text technické zprávy.
+	\end{itemize}
+\end{itemize}
+
+\chapter{Lokální instalace}
+Tato příloha obsahuje návod pro zprovoznění aplikace na lokálním systému. Způsob nasazení aplikace na server je tomu lokálnímu velice podobný, jen je potřeba nastavit pár věcí navíc.
+
+\subsubsection{Prerekvizity}
+\begin{itemize}
+	\item \textbf{Python} v3.10 + pip
+	\item \textbf{PHP} v8.1
+	\item \textbf{Composer}
+	\item \textbf{MySQL}
+	\item \textbf{Bash}
+\end{itemize}
+
+\subsubsection{Nastavení konfiguračního souboru}
+Je zapotřebí nastavit konfigurační soubor Laravel aplikace s~názvem .env. Na Linuxových OS může být tento soubor skrytý před zobrazením. V~rámci tohoto souboru je zapotřebí nastavit v~sekci týkající se databáze parametry \verb|DB_USERNAME| a \verb|DB_PASSWORD|. Tedy uživatelské jméno a heslo k~účtu na MySQL serveru.
+
+K~nachystání potřebných částí slouží shell skript \verb|setup.sh|. V~tomto skriptu je potřeba vyplnit databázové uživatelské jméno a heslo. Skript se poté spouští v~kořenovém adresáři příkazem:
+\begin{itemize}
+	\item \verb|./setup.sh|
+\end{itemize}
+
+V~následujících sekcích je vysvětlen postup tohoto skriptu.
+
+\subsubsection{Instalace modulů pro jazyk Python}
+Skript nejdříve provede nainstalování všech potřebných modulů pro jazyk Python za pomocí pip instalátoru.
+
+\begin{itemize}
+	\item \verb|pip install "nazev\_modulu"|
+\end{itemize}
+
+\subsubsection{Databáze}
+Dále \verb|setup.sh| spouští příkaz:
+
+\begin{itemize}
+	\item \verb|mysql -uUSERNAME -pPASSWORD < SQL.sql|
+\end{itemize}
+
+Tento příkaz spustí na databázovém serveru queries ze souboru SQL.sql. Tyto queries vytvoří databázové schéma s~názvem \verb|xpopdo00|. Do tohoto schématu vytvoří tabulky a vloží do tabulek počáteční data.
+
+\subsubsection{Instalace závislostí}
+Zaváděcí skript dál přejde do složky \verb|src|, kde spouští příkaz: 
+
+\begin{itemize}
+	\item \verb|composer install|
+\end{itemize}
+
+který nainstaluje závislosti nutné ke správnému fungování frameworku Laravel.
+
+\subsubsection{Spuštění aplikace}
+Jako poslední skript provede celkem 3 příkazy:
+\begin{itemize}
+	\item \verb|php artisan route:clear|
+	\item \verb|php artisan route:cache|
+	\item \verb|php artisan serve|
+\end{itemize}
+
+První dva příkazy vyčistí a vytvoří nové routy. Poslední příkaz spustí aplikaci, která poběží na lokální instanci na adrese:
+
+\begin{itemize}
+	\item \verb|http://127.0.0.1:8000|
+\end{itemize}
+
