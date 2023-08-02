@@ -23,6 +23,7 @@ http://perun.fit.vutbr.cz/xpopdo00/
     - resources
         - views -> application views
     - routes -> routing folder
+- territories -> scripts for creating territory database
 
 # Prerequisites
 - PHP 8.1
